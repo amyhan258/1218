@@ -57,4 +57,5 @@ dt.wide2
 dt.wide3 <- dcast(dt.long2,
                   ... ~ variable,
                   value.var = c("BP", "Chol"))
+
 dt.wide3
