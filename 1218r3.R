@@ -3,7 +3,7 @@ library(curl)
 url <- "https://raw.githubusercontent.com/jinseob2kim/lecture-snuhlab/master/data/example_g1e.csv"
 dt <- fread(url,header=T)
 
-#기본문법
+#기본 문법
 dt[, c(13, 14)]
 dt[, .(HGHT, WGHT)]
 dt[, .(Height = HGHT, Weight = WGHT)]
@@ -32,6 +32,7 @@ dt[, lapply(.SD, mean), by=EXMD_BZ_YYYY] # .SD 는 ’Subset of Data’의 약�
 dt[, head(.SD, 2), by=EXMD_BZ_YYYY] # .SD 기호를 사용하여 연도별로 처음 두 개의 행을 추출할 수 있다.
 dt[, c(.N, lapply(.SD, mean)), by=EXMD_BZ_YYYY, .SDcols=c("HGHT", "WGHT")] #.SDcols는 연산 대상이 되는 특정 칼럼을 지정하는 특수 기호
 
+
 #melt
 dt.long1 <- melt(dt,
                  id.vars = c("EXMD_BZ_YYYY", "RN_INDI", "HGHT", "WGHT"),
@@ -47,6 +48,7 @@ dt.long2 <- melt(dt,
                  value.name = c("BP", "Chol")) # melt 함수에 measure=list(col1, col2, …) 형식으로 여러 개의 칼럼 이름을 list() 형태로 넣는다. 이때 공통의 value.name을 지정할 수 있다.
 dt.long2
 
+
 #dcast
 dt.wide1 <- dcast(dt.long1, EXMD_BZ_YYYY + RN_INDI + HGHT + WGHT ~ measure, value.var = "val")
 dt.wide1
@@ -58,3 +60,4 @@ dt.wide3 <- dcast(dt.long2,
                   ... ~ variable,
                   value.var = c("BP", "Chol"))
 dt.wide3
+
