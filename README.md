@@ -1,6 +1,6 @@
 12/18
 1. R
-- 깃헙, 기초, 기술통계, data.table, tidyverse(dplyr, tibble, tidyr 약간)
+- 깃헙, 기초, 기술통계, data.table, tidyverse(dplyr, tibble, tidyr)
 
 2. ML model
 - boosting
